@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-card">
+
+    <h2>
+        Profile
+    </h2>
+
+    {% if user.profile.profile_picture %}
+
+    <img
+        src="{{ user.profile.profile_picture.url }}"
+        width="150">
+
+    {% endif %}
+
+    <form method="POST"
+          enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        {{ user_form.as_p }}
+
+        {{ profile_form.as_p }}
+
+        <button type="submit"
+                class="btn">
+
+            Save Changes
+
+        </button>
+
+    </form>
+
+</div>
+
+{% endblock %}

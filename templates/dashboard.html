@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>
+    Dashboard
+</h1>
+
+<div class="stats-container">
+
+    <div class="stat-card">
+        Total Entries
+        <h2>{{ total_entries }}</h2>
+    </div>
+
+    <div class="stat-card">
+        Happy
+        <h2>{{ happy_count }}</h2>
+    </div>
+
+    <div class="stat-card">
+        Excited
+        <h2>{{ excited_count }}</h2>
+    </div>
+
+    <div class="stat-card">
+        Calm
+        <h2>{{ calm_count }}</h2>
+    </div>
+
+</div>
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="q"
+        placeholder="Search title">
+
+    <input
+        type="date"
+        name="date">
+
+    <button
+        type="submit"
+        class="btn">
+
+        Search
+
+    </button>
+
+</form>
+
+<hr>
+
+{% for entry in entries %}
+
+<div class="diary-card">
+
+    <h3>
+
+        {{ entry.title }}
+
+    </h3>
+
+    <p>
+
+        Mood:
+        {{ entry.mood }}
+
+    </p>
+
+    <p>
+
+        {{ entry.created_date }}
+
+    </p>
+
+    <a href="{% url 'entry_detail' entry.pk %}"
+       class="btn">
+
+       View
+
+    </a>
+
+</div>
+
+{% empty %}
+
+<p>
+
+No diary entries found.
+
+</p>
+
+{% endfor %}
+
+{% endblock %}
