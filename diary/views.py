@@ -23,8 +23,8 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            user = form.save()
-            login(request,user)
+            user = form.save()          # Create the new user
+            login(request, user)        # Log in the newly created user
             return redirect('dashboard')
     else:
         form = RegisterForm()
