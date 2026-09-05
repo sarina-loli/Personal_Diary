@@ -27,10 +27,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = os.environ.get(
-    'ALLOWED_HOSTS',
+    'personal-diary-yhdv.onrender.com',
     'localhost,127.0.0.1'
 ).split(',')
-
+CSRF_TRUSTED_ORIGINS = "https://personal-diary-yhdv.onrender.com/"
 
  
 # Application definition
